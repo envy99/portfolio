@@ -1,0 +1,15 @@
+inherit_gem:
+  ragnarson-stylecheck: config/rubocop.yml
+
+Metrics/LineLength:
+  Exclude:
+    - config/**/*.rb
+
+Rails/FilePath:
+  Exclude:
+    - config/**/*.rb
+
+AllCops:
+  TargetRubyVersion: 2.5.1
+  Exclude:
+    - bin/**

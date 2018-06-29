@@ -17,6 +17,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'haml-rails'
 gem 'autoprefixer-rails', '~> 8.6', '>= 8.6.4'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug', platforms: %i(mri mingw x64_mingw)

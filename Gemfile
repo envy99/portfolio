@@ -22,6 +22,7 @@ gem 'devise'
 group :development, :test do
   gem 'byebug', platforms: %i(mri mingw x64_mingw)
   gem 'dotenv-rails'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -36,7 +37,6 @@ end
 group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'factory_bot'
 end

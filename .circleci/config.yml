@@ -1,0 +1,41 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/portfolio
+    docker:
+      - image: circleci/ruby:2.5.1-node-browsers
+        environment:
+          RAILS_ENV: test
+      - image: circleci/mongo:4.0
+        environment:
+          MONGO_INITDB_DATABASE: portfolio_test
+	  MONGO_INITDB_ROOT_USERNAME: portfolio
+	  MONGO_INITDB_ROOT_PASSWORD: ""
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          - v1-dependencies-
+      - run:
+          name: Install dependencies
+          command: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      # Wait for database
+      - run: dockerize -wait tcp://localhost:27017 -timeout 1m
+      # Setup the environment
+      - run: cp .env.example .env
+      # Database setup
+      - run: bundle exec rake db:create
+      # Run tests
+      - run:
+          name: Run tests
+          command: bundle exec rspec
+      # Check code styling using Rubocop
+      - run:
+          name: Run code stylecheck
+          command: bundle exec rubocop --fail-level warning

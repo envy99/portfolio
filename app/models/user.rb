@@ -1,7 +1,9 @@
 class User
   include Mongoid::Document
-  embeds_one :profile
-  
+  embeds_one :profile, autobuild: true
+
+  after_create :create_profile
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -35,4 +37,14 @@ class User
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
+  
+  protected
+
+  def create_profile
+    profile.update!(name: username)
+  end
+
+  def username
+    email.split("@")[0]
+  end
 end

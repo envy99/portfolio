@@ -39,6 +39,6 @@ end
 group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'shoulda-matchers'
+  gem 'mongoid-rspec'
   gem 'factory_bot'
 end

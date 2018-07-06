@@ -1,9 +1,15 @@
 require "rails_helper"
 
 RSpec.describe Section, type: :model do
+  let(:section) { FactoryBot.build(:section) }
+
   describe "validation tests" do
     context "for name" do
       it { is_expected.to validate_presence_of(:name) }
+    end
+
+    it "should save successfully" do
+      expect(section.save).to eq(true)
     end
   end
 

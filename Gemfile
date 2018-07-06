@@ -25,6 +25,7 @@ group :development, :test do
   gem 'byebug', platforms: %i(mri mingw x64_mingw)
   gem 'dotenv-rails'
   gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -40,5 +41,5 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'mongoid-rspec'
-  gem 'factory_bot'
+  gem 'database_cleaner'
 end

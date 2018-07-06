@@ -8,7 +8,7 @@ RSpec.describe Profile, type: :model do
   end
 
   describe "association tests" do
-    it { is_expected.to be_embedded_in(:user).as_inverse_of(:profile) }
+    it { is_expected.to belong_to(:user).as_inverse_of(:profile) }
     it { is_expected.to embed_many(:sections) }
   end
 end

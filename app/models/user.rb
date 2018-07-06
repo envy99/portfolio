@@ -1,6 +1,7 @@
 class User
   include Mongoid::Document
-  embeds_one :profile, autobuild: true
+  
+  has_one :profile
 
   after_create :create_profile
 
@@ -38,13 +39,13 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
   
-  protected
-
-  def create_profile
-    profile.update!(name: username)
-  end
-
   def username
     email.split("@")[0]
+  end
+
+  private
+
+  def create_profile
+    Profile.create!(user_id: id, name: username)
   end
 end

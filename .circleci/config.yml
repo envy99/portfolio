@@ -9,8 +9,6 @@ jobs:
       - image: circleci/mongo:4.0
         environment:
           MONGO_INITDB_DATABASE: portfolio_test
-          MONGO_INITDB_ROOT_USERNAME: portfolio
-          MONGO_INITDB_ROOT_PASSWORD: portfolio
     steps:
       - checkout
       # Download and cache dependencies
@@ -26,16 +24,18 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
       # Wait for database
-      - run: dockerize -wait tcp://localhost:27017 -timeout 1m
-      # Setup the environment
-      - run: cp .env.example .env
-      # Database setup
-      - run: bundle exec rake db:create
-      # Run tests
       - run:
-          name: Run tests
+          name: Wait for database
+          command: dockerize -wait tcp://localhost:27017 -timeout 1m
+      # Setup the environment variables
+      - run:
+          name: Setup the environment variables
+          command: cp .env.example .env
+      # Run automated tests
+      - run:
+          name: Run automated tests
           command: bundle exec rspec
       # Check code styling using Rubocop
       - run:
-          name: Run code stylecheck
+          name: Check code styling using Rubocop
           command: bundle exec rubocop --fail-level warning

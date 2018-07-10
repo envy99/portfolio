@@ -52,6 +52,8 @@ GEM
     bindex (0.5.0)
     bson (4.3.0)
     builder (3.2.3)
+    bulma-rails (0.7.1)
+      sass (~> 3.2)
     byebug (10.0.2)
     capybara (2.18.0)
       addressable
@@ -89,6 +91,8 @@ GEM
     factory_bot (4.10.0)
       activesupport (>= 3.0.0)
     ffi (1.9.25)
+    font-awesome-rails (4.7.0.4)
+      railties (>= 3.2, < 6.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     haml (5.0.4)
@@ -273,12 +277,14 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails (~> 8.6, >= 8.6.4)
+  bulma-rails (~> 0.7.1)
   byebug
   capybara
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
   factory_bot
+  font-awesome-rails
   haml-rails
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)

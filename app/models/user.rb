@@ -1,7 +1,7 @@
 class User
   include Mongoid::Document
-  
-  has_one :profile
+
+  has_one :profile, dependent: :destroy
 
   after_create :create_profile
 
@@ -38,7 +38,7 @@ class User
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
-  
+
   def username
     email.split("@")[0]
   end

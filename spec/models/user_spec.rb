@@ -10,6 +10,6 @@ RSpec.describe User, type: :model do
   end
 
   describe "association tests" do
-    it { is_expected.to have_one(:profile) }
+    it { is_expected.to have_one(:profile).with_dependent(:destroy) }
   end
 end

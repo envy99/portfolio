@@ -298,8 +298,8 @@ DEPENDENCIES
   database_cleaner
   devise
   dotenv-rails
-  font-awesome-rails
   factory_bot_rails
+  font-awesome-rails
   haml-rails
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
@@ -312,8 +312,8 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
-  springfont-awe
-  springfont-awe
+  spring
+  spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)

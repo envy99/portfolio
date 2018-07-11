@@ -1,0 +1,6 @@
+.has-background-transparent {
+  &,
+  &:hover {
+    background-color: transparent !important;
+  }
+}

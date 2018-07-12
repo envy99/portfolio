@@ -1,12 +1,17 @@
 !!!
 %html
   %head
-    %title Portfolio
+    - if content_for? :page_title
+      = yield :page_title
+    - else
+      %title Portfolio
     = csrf_meta_tags
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track": "reload"
     = javascript_include_tag "application", "data-turbolinks-track": "reload"
   %body
     = render "shared/navbar"
-    %p.notice= notice
-    %p.alert= alert
-    = yield
+    - if flash.any?
+      .section.has-padding-bottom-none
+        .container
+          = render "shared/flash_messages"
+    = render "shared/main"

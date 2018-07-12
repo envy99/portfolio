@@ -1,0 +1,91 @@
+$sizeUnit: rem;
+$marginKey: "has-margin";
+$paddingKey: "has-padding";
+$separator: "-";
+$sizes: (
+  ("none", 0),
+  ("xxs", 0.125),
+  ("xs", 0.25),
+  ("sm", 0.5),
+  ("md", 1),
+  ("lg", 2),
+  ("xl", 4),
+  ("xxl", 8),
+);
+$positions: (
+  "top",
+  "right",
+  "bottom",
+  "left"
+);
+$axes: (
+  "horizontal",
+  "vertical"
+);
+
+@function sizeValue($key, $value) {
+  @return if($key == "none", 0, $value + $sizeUnit);
+}
+
+@function axisOrderedValues($axis, $value) {
+  @if $axis == "horizontal" {
+    @return 0 $value;
+  }
+  @else if $axis == "vertical" {
+    @return $value 0;
+  }
+}
+
+@each $size in $sizes {
+  $sizeKey: nth($size, 1);
+  $sizeValue: nth($size, 2);
+
+  .#{$marginKey}#{$separator}#{$sizeKey} {
+    margin: sizeValue($sizeKey, $sizeValue);
+  }
+  .#{$paddingKey}#{$separator}#{$sizeKey} {
+    padding: sizeValue($sizeKey, $sizeValue);
+  }
+
+  @each $axis in $axes {
+    .#{$marginKey}#{$separator}#{$axis}#{$separator}#{$sizeKey} {
+      @if $sizeKey != "none" {
+        margin: axisOrderedValues($axis, sizeValue($sizeKey, $sizeValue));
+      }
+      @else {
+        @if $axis == "horizontal" {
+          margin-left: $sizeValue;
+          margin-right: $sizeValue;
+        }
+        @else if $axis == "vertical" {
+          margin-top: $sizeValue;
+          margin-bottom: $sizeValue;
+        }
+      }
+    }
+    .#{$paddingKey}#{$separator}#{$axis}#{$separator}#{$sizeKey} {
+      @if $sizeKey != "none" {
+        padding: axisOrderedValues($axis, sizeValue($sizeKey, $sizeValue));
+      }
+      @else {
+        @if $axis == "horizontal" {
+          padding-left: $sizeValue;
+          padding-right: $sizeValue;
+        }
+        @else if $axis == "vertical" {
+          padding-top: $sizeValue;
+          padding-bottom: $sizeValue;
+        }
+      }
+    }
+  }
+
+  @each $position in $positions {
+    .#{$marginKey}#{$separator}#{$position}#{$separator}#{$sizeKey} {
+      margin-#{$position}: sizeValue($sizeKey, $sizeValue);
+    }
+    .#{$paddingKey}#{$separator}#{$position}#{$separator}#{$sizeKey} {
+      padding-#{$position}: sizeValue($sizeKey, $sizeValue);
+    }
+  }
+}

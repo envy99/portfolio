@@ -1,0 +1,6 @@
+.container {
+  &.is-fullwidth {
+    width: auto;
+    max-width: none;
+  }
+}

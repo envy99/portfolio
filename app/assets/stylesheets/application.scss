@@ -2,6 +2,11 @@
 @import "bulma";
 @import "font-awesome";
 
+@import "bulma-overrides/container";
+
+@import "base/global";
+
 @import "utilities/background";
+@import "utilities/spacing";
 
 @import "layout/navbar"

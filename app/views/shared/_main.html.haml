@@ -1,0 +1,8 @@
+%main
+  - if content_for? :container_fullwidth
+    .container.is-fullwidth
+      = yield :container_fullwidth
+  - else
+    .section
+      .container
+        = yield

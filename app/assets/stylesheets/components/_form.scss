@@ -22,6 +22,7 @@
       margin-left: 1rem;
 
       @include until($tablet) {
+        display: block;
         margin: 0 0.5rem;
       }
     }

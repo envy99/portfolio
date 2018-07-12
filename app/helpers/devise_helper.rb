@@ -1,8 +1,6 @@
 module DeviseHelper
   def devise_error_messages!
-    if resource.errors.full_messages.any?
-      flash.now[:alert] = resource.errors.full_messages
-    end
-    return ""
+    flash.now[:alert] = resource.errors.full_messages if resource.errors.full_messages.any?
+    ""
   end
 end

@@ -1,10 +1,22 @@
-%h2 Forgot your password?
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .actions
-    = f.submit "Send me reset password instructions"
-= render "devise/shared/links"
+- content_for :fullscreen do
+  .section.flex-fullscreen.has-background-light
+    .container.is-narrow
+      = devise_error_messages!
+      - if flash.any?
+        = render "shared/flash_messages"
+      .box.box--highlight.form.has-text-centered
+        %h2.title Forgot your password?
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+          .field
+            .control.has-icons-left
+              = f.email_field :email, class: "input", autofocus: true, autocomplete: "email", placeholder: "Email"
+              %span.icon.is-small.is-left
+                %i.fa.fa-envelope
+          .field
+            .control
+              = f.submit "Reset password", class: "button is-primary is-medium is-fullwidth"
+        .columns
+          .column.links
+            = render "devise/shared/links"
+          .column.is-narrow.actions
+            = link_to "Back", root_path, class: "button is-danger is-outlined"

@@ -9,11 +9,14 @@
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track": "reload"
     = javascript_include_tag "application", "data-turbolinks-track": "reload"
   %body.site
-    = render "shared/navbar"
-    .site-content
-      - if flash.any?
-        .section.has-padding-bottom-none
-          .container
-            = render "shared/flash_messages"
-      = render "shared/main"
-    = render "shared/footer"
+    - if content_for? :fullscreen
+      = yield :fullscreen
+    - else
+      = render "shared/navbar"
+      .site-content
+        - if flash.any?
+          .section.has-padding-bottom-none
+            .container
+              = render "shared/flash_messages"
+        = render "shared/main"
+      = render "shared/footer"

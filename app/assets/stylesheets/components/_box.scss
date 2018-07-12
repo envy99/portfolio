@@ -1,0 +1,8 @@
+.box--highlight {
+  padding: 2rem 3rem;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.15);
+
+  @include until($tablet) {
+    padding: 2rem;
+  }
+}

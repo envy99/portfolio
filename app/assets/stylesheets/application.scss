@@ -5,6 +5,7 @@
 @import "bulma-overrides/container";
 
 @import "base/global";
+@import "base/helpers";
 
 @import "utilities/background";
 @import "utilities/spacing";
@@ -13,3 +14,5 @@
 @import "layout/footer";
 
 @import "components/brand";
+@import "components/box";
+@import "components/form";

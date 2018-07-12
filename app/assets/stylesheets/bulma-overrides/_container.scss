@@ -1,6 +1,11 @@
 .container {
   &.is-fullwidth {
-    width: auto;
+    width: 100%;
     max-width: none;
+  }
+  
+  &.is-narrow {
+    width: 600px;
+    max-width: 100%;
   }
 }

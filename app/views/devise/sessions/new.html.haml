@@ -1,17 +1,29 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+- content_for :fullscreen do
+  .section.flex-fullscreen.has-background-light
+    .container.is-narrow
+      - if flash.any?
+        = render "shared/flash_messages"
+      .box.box--highlight.form.has-text-centered
+        %h2.title Sign in to your account
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .field
+            .control.has-icons-left
+              = f.email_field :email, class: "input", autofocus: true, autocomplete: "email", placeholder: "Email"
+              %span.icon.is-small.is-left
+                %i.fa.fa-envelope
+          .field
+            .control.has-icons-left
+              = f.password_field :password, class: "input", autocomplete: "off", placeholder: "Password"
+              %span.icon.is-small.is-left
+                %i.fa.fa-lock
+          - if devise_mapping.rememberable?
+            = f.check_box :remember_me
+            = f.label :remember_me, class: "checkbox"
+          .field
+            .control
+              = f.submit "Sign in", class: "button is-primary is-medium is-fullwidth"
+        .columns
+          .column.links
+            = render "devise/shared/links"
+          .column.is-narrow.actions
+            = link_to "Back", root_path, class: "button is-danger is-outlined"

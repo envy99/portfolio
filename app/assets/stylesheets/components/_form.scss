@@ -1,0 +1,34 @@
+.form {
+  margin: 2rem 0;
+
+  .field {
+    margin: 1rem 0;
+  }
+
+  .title {
+    margin: 0.5rem 0 2rem;
+  }
+
+  .actions {
+    align-self: flex-end;
+    order: 1;
+  }
+
+  .links {
+    text-align: right;
+    order: 2;
+    
+    a {
+      margin-left: 1rem;
+
+      @include until($tablet) {
+        margin: 0 0.5rem;
+      }
+    }
+
+    @include until($tablet) {
+      text-align: center;
+      padding-bottom: 0;
+    }
+  }
+}

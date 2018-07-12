@@ -1,0 +1,20 @@
+%footer.footer.has-background-light
+  .container
+    .columns.is-gapless
+      .column.is-narrow
+        .footer-brand
+          = link_to "Portfolio", root_path, class: "brand-logo"
+      .column
+        .footer-items
+          = render "shared/nav_items", classes: "button is-light"
+    .footer-credits
+      Created with
+      %span.icon.has-text-danger
+        %i.fa.fa-heart
+      by
+      %a{href: "https://ragnarson.com/", target: "_blank"}
+        Ragnarson's
+      employees - 
+      %a{href: "https://www.jonaszkadziela.pl/", target: "_blank"}
+        Jonasz
+      &amp; Staszek

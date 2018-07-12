@@ -1,14 +1,14 @@
 %nav.navbar.is-light.is-spaced
   .container
     .navbar-brand
-      = link_to "Portfolio", root_path, class: "navbar-item has-background-transparent"
+      = link_to "Portfolio", root_path, class: "navbar-item brand-logo has-background-transparent"
       .navbar-burger.burger{"data-target": "navMenu"}
         %span
         %span
         %span
     #navMenu.navbar-menu
       .navbar-start
-        = link_to "Home", root_path, class: "navbar-item"
+        = render "shared/nav_items", classes: "navbar-item"
       .navbar-end
         .navbar-item
           .field.is-grouped.is-grouped-multiline

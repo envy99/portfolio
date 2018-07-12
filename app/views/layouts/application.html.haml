@@ -8,10 +8,12 @@
     = csrf_meta_tags
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track": "reload"
     = javascript_include_tag "application", "data-turbolinks-track": "reload"
-  %body
+  %body.site
     = render "shared/navbar"
-    - if flash.any?
-      .section.has-padding-bottom-none
-        .container
-          = render "shared/flash_messages"
-    = render "shared/main"
+    .site-content
+      - if flash.any?
+        .section.has-padding-bottom-none
+          .container
+            = render "shared/flash_messages"
+      = render "shared/main"
+    = render "shared/footer"

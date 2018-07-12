@@ -1,0 +1,30 @@
+.footer {
+  padding: 3rem 1.5rem;
+
+  &-brand {
+    margin: 0 1.5rem 0 0;
+    
+    @include until($desktop) {
+      margin: 0 0 1.5rem 0;
+      text-align: center;
+    }
+  }
+
+  &-items {
+    text-align: center;
+
+    @include from($tablet) {
+      text-align: right;
+    }
+  }
+
+  &-credits {
+    font-size: 0.85rem;
+    text-align: center;
+    color: $grey;
+
+    a {
+      color: $dark;
+    }
+  }
+}

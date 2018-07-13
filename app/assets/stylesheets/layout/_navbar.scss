@@ -1,7 +1,9 @@
-.navbar-brand {
-  @include from($desktop) {
-    margin-right: 0.5rem;
-    padding-right: 0.5rem;
-    border-right: 1px solid $dark;
+.navbar {
+  &-brand {
+    @include from($desktop) {
+      margin-right: 0.5rem;
+      padding-right: 0.5rem;
+      border-right: 1px solid $dark;
+    }
   }
 }

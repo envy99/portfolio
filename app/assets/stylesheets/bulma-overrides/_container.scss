@@ -5,7 +5,7 @@
   }
   
   &.is-narrow {
-    width: 600px;
+    width: $narrow-width;
     max-width: 100%;
   }
 }

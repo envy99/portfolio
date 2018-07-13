@@ -2,4 +2,14 @@
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
 
+// Bulma variables
+
 $family-sans-serif: "Open Sans", "Roboto", "Helvetica", sans-serif;
+
+// Custom variables
+
+$narrow-width: 600px;
+
+$shadow-small: 0.5rem rgba($black, 0.075);
+$shadow-medium: 2rem rgba($black, 0.15);
+$shadow-large: 4.5rem rgba($black, 0.175);

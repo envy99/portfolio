@@ -1,35 +1,36 @@
 - content_for :fullscreen do
-  .section.flex-fullscreen.has-background-light
+  .section.is-flex.is-fullscreen.is-column.has-content-centered.has-background-light
     .container.is-narrow
       = devise_error_messages!
       - if flash.any?
         = render "shared/flash_messages"
-      .box.box--highlight.form.has-text-centered
-        %h2.title Create a new account
-        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-          .field
-            .control.has-icons-left
-              = f.email_field :email, class: "input", autofocus: true, autocomplete: "email", placeholder: "Email"
-              %span.icon.is-small.is-left
-                %i.fa.fa-envelope
-          .field
-            .control.has-icons-left
-              - if @minimum_password_length
-                = f.password_field :password, class: "input", autocomplete: "off", placeholder: "Password (#{@minimum_password_length} characters minimum)"
-              - else
-                = f.password_field :password, class: "input", autocomplete: "off", placeholder: "Password"
-              %span.icon.is-small.is-left
-                %i.fa.fa-lock
-          .field
-            .control.has-icons-left
-              = f.password_field :password_confirmation, class: "input", autocomplete: "off", placeholder: "Confirm password"
-              %span.icon.is-small.is-left
-                %i.fa.fa-lock
-          .field
-            .control
-              = f.submit "Sign up", class: "button is-primary is-medium is-fullwidth"
-        .columns
-          .column.links
-            = render "devise/shared/links"
-          .column.is-narrow.actions
-            = link_to "Back", root_path, class: "button is-danger is-outlined"
+      .box.is-highlight
+        .form.has-text-centered
+          %h2.title Create a new account
+          = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+            .field
+              .control.has-icons-left
+                = f.email_field :email, class: "input", autofocus: true, autocomplete: "email", placeholder: "Email"
+                %span.icon.is-small.is-left
+                  %i.fa.fa-envelope
+            .field
+              .control.has-icons-left
+                - if @minimum_password_length
+                  = f.password_field :password, class: "input", autocomplete: "off", placeholder: "Password (#{@minimum_password_length} characters minimum)"
+                - else
+                  = f.password_field :password, class: "input", autocomplete: "off", placeholder: "Password"
+                %span.icon.is-small.is-left
+                  %i.fa.fa-lock
+            .field
+              .control.has-icons-left
+                = f.password_field :password_confirmation, class: "input", autocomplete: "off", placeholder: "Confirm password"
+                %span.icon.is-small.is-left
+                  %i.fa.fa-lock
+            .field
+              .control
+                = f.submit "Sign up", class: "button is-primary is-medium is-fullwidth"
+          .columns
+            .column.links
+              = render "devise/shared/links"
+            .column.is-narrow.actions
+              = link_to "Back", root_path, class: "button is-danger is-outlined"

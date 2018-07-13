@@ -1,0 +1,14 @@
+.is-flex {
+  &.is-fullscreen {
+    flex: 1;
+  }
+
+  &.is-column {
+    flex-direction: column;
+  }
+
+  &.has-content-centered {
+    justify-content: center;
+    align-items: center;
+  }
+}

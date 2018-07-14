@@ -7,4 +7,8 @@ class Profile
 
   field :name, type: String
   validates :name, presence: true
+
+  def belongs_to?(owner)
+    user == owner
+  end
 end

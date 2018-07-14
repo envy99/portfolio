@@ -1,2 +1,24 @@
-%h1 Profiles#show
-%p Find me in app/views/profiles/show.html.haml
+.tile.is-ancestor
+  .tile.is-parent
+    .tile.is-child.notification.is-info.has-text-centered.has-padding-md
+      %h3.is-size-3= @profile.name.capitalize
+- if @profile.belongs_to?(current_user)
+  .tile.is-ancestor
+    .tile.is-parent
+      .tile.is-child.notification.is-light.has-padding-md
+        .columns
+          .column
+          .column.is-narrow
+            .message.is-info
+              .message-header.is-flex.has-content-centered
+                %p Manage your profile
+              .message-body.is-flex.has-content-centered
+                .buttons.has-addons
+                  = link_to edit_profile_path(@profile), class: "button is-link" do
+                    %span Edit
+                    %span.icon
+                      %i.fa.fa-pencil
+                  = link_to profile_path(@profile), method: :delete, data: { confirm: "Are you sure?" }, class: "button is-danger" do
+                    %span Delete
+                    %span.icon
+                      %i.fa.fa-trash

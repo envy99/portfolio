@@ -1,0 +1,13 @@
+- if @profiles.empty?
+  .message.is-info
+    .message-body
+      %span.icon
+        %i.fa.fa-info-circle
+      There are no profiles created yet.
+- else
+  %h2.title Browse all profiles
+  - @profiles.each do |profile|
+    .box
+      .media
+        .media-content
+          %h3.subtitle= link_to profile.name.capitalize, profile

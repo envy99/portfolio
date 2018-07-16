@@ -20,6 +20,8 @@ gem 'haml-rails'
 gem 'font-awesome-rails'
 gem 'autoprefixer-rails', '~> 8.6', '>= 8.6.4'
 gem 'devise'
+gem 'jquery-rails'
+gem 'cocoon'
 
 group :development, :test do
   gem 'byebug', platforms: %i(mri mingw x64_mingw)

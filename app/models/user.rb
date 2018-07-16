@@ -3,8 +3,6 @@ class User
 
   has_one :profile, dependent: :destroy
 
-  after_create :create_profile
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -41,11 +39,5 @@ class User
 
   def username
     email.split("@")[0]
-  end
-
-  private
-
-  def create_profile
-    Profile.create!(user_id: id, name: username)
   end
 end

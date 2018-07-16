@@ -27,12 +27,12 @@ $axes: (
   @return if($key == "none", 0, $value + $sizeUnit);
 }
 
-@function axisOrderedValues($axis, $value) {
-  @if $axis == "horizontal" {
-    @return 0 $value;
+@function axisPositions($axis) {
+  @if $axis == nth($axes, 1) {
+    @return join(nth($positions, 4), nth($positions, 2));
   }
-  @else if $axis == "vertical" {
-    @return $value 0;
+  @else if $axis == nth($axes, 2) {
+    @return join(nth($positions, 1), nth($positions, 3));
   }
 }
 
@@ -48,35 +48,16 @@ $axes: (
   }
 
   @each $axis in $axes {
+    $firstPos: nth(axisPositions($axis), 1);
+    $secondPos: nth(axisPositions($axis), 2);
+
     .#{$marginKey}#{$separator}#{$axis}#{$separator}#{$sizeKey} {
-      @if $sizeKey != "none" {
-        margin: axisOrderedValues($axis, sizeValue($sizeKey, $sizeValue));
-      }
-      @else {
-        @if $axis == "horizontal" {
-          margin-left: $sizeValue;
-          margin-right: $sizeValue;
-        }
-        @else if $axis == "vertical" {
-          margin-top: $sizeValue;
-          margin-bottom: $sizeValue;
-        }
-      }
+      margin-#{$firstPos}: sizeValue($sizeKey, $sizeValue);
+      margin-#{$secondPos}: sizeValue($sizeKey, $sizeValue);
     }
     .#{$paddingKey}#{$separator}#{$axis}#{$separator}#{$sizeKey} {
-      @if $sizeKey != "none" {
-        padding: axisOrderedValues($axis, sizeValue($sizeKey, $sizeValue));
-      }
-      @else {
-        @if $axis == "horizontal" {
-          padding-left: $sizeValue;
-          padding-right: $sizeValue;
-        }
-        @else if $axis == "vertical" {
-          padding-top: $sizeValue;
-          padding-bottom: $sizeValue;
-        }
-      }
+      padding-#{$firstPos}: sizeValue($sizeKey, $sizeValue);
+      padding-#{$secondPos}: sizeValue($sizeKey, $sizeValue);
     }
   }
 

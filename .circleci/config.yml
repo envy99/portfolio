@@ -38,4 +38,4 @@ jobs:
       # Check code styling using Rubocop
       - run:
           name: Check code styling using Rubocop
-          command: bundle exec rubocop --fail-level warning
+          command: bundle exec rubocop

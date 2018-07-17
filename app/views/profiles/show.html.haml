@@ -1,11 +1,19 @@
-.tile.is-ancestor
-  .tile.is-parent
-    .tile.is-child.notification.is-info.has-text-centered.has-padding-md
-      %h3.is-size-3= @profile.name.capitalize
+.columns
+  .column
+    .notification.is-info.has-text-centered.has-padding-md
+      %h3.is-size-3= @profile.name.upcase_first
+- if @profile.sections.any?
+  .columns.is-multiline
+    - @profile.sections.each do |section|
+      .column.is-12
+        .message
+          .message-header.is-flex.has-content-centered
+            %h4.is-size-4= section.name.upcase_first
+          .message-body
 - if @profile.belongs_to?(current_user)
-  .tile.is-ancestor
-    .tile.is-parent
-      .tile.is-child.notification.is-light.has-padding-md
+  .columns
+    .column
+      .notification.has-padding-md
         .columns
           .column
           .column.is-narrow

@@ -1,8 +1,24 @@
 = form_for @profile do |f|
-  .field
-    .control
-      = f.label :name, class: "label"
-      = f.text_field :name, class: "input", autofocus: true, placeholder: "Profile name"
+  .message
+    .message-header
+      %p.is-size-4 Profile
+    .message-body.has-padding-vertical-sm
+      .field
+        .control
+          = f.label :name, class: "label"
+          = f.text_field :name, class: "input", autofocus: true, placeholder: "Profile name"
+      .field
+        .message.is-dark
+          .message-header
+            %p.is-size-4 Sections
+          .message-body.js-sections
+            = f.fields_for :sections do |section|
+              = render "section_fields", f: section
+            .links
+              = link_to_add_association f, :sections, class: "button is-link" do
+                %span Add new section
+                %span.icon
+                  .fa.fa-plus-circle
   .field
     .control
       = f.submit "Update profile", class: "button is-primary is-medium is-fullwidth"

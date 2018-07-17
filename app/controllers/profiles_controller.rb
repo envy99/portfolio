@@ -34,7 +34,10 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:name)
+    params.require(:profile).permit(
+      :name,
+      sections_attributes: %i(id _destroy name)
+    )
   end
 
   def check_owner!

@@ -10,6 +10,33 @@ $family-sans-serif: "Open Sans", "Roboto", "Helvetica", sans-serif;
 
 $narrow-width: 600px;
 
-$shadow-small: 0.5rem rgba($black, 0.075);
-$shadow-medium: 2rem rgba($black, 0.15);
-$shadow-large: 4.5rem rgba($black, 0.175);
+$shadow-sm: 0.5rem rgba($black, 0.075);
+$shadow-md: 2rem rgba($black, 0.15);
+$shadow-lg: 4.5rem rgba($black, 0.175);
+
+// Variables used in custom Sass functions
+
+$separator: "-";
+
+$spacer: 1rem;
+$spacers: (
+  ("none", 0),
+  ("xxs", ($spacer * 0.125)),
+  ("xs", ($spacer * 0.25)),
+  ("sm", ($spacer * 0.5)),
+  ("md", $spacer),
+  ("lg", ($spacer * 2)),
+  ("xl", ($spacer * 4)),
+  ("xxl", ($spacer * 8)),
+);
+
+$positions: (
+  "top",
+  "right",
+  "bottom",
+  "left"
+);
+$axes: (
+  "horizontal",
+  "vertical"
+);

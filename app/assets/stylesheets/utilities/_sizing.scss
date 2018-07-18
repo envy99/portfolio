@@ -1,0 +1,19 @@
+$properties: (
+  ("is#{$separator}width", width),
+  ("is#{$separator}height", height)
+);
+$sizes: (
+  ("25", 25%),
+  ("50", 50%),
+  ("75", 75%),
+  ("100", 100%),
+  ("auto", auto)
+);
+
+@each $propKey, $propValue in $properties {
+  @each $sizeKey, $sizeValue in $sizes {
+    .#{$propKey}#{$separator}#{$sizeKey} {
+      #{$propValue}: $sizeValue !important;
+    }
+  }
+}

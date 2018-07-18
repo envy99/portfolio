@@ -1,7 +1,7 @@
 .box {
   &.is-highlight {
     padding: 2rem 3rem;
-    box-shadow: 0 0 $shadow-medium;
+    box-shadow: 0 0 $shadow-md;
 
     @include until($tablet) {
       padding: 2rem;

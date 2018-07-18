@@ -6,4 +6,12 @@ class Item
 
   field :content, type: Hash
   validates :content, presence: true
+
+  def is?(type)
+    content[:type] == type.to_s
+  end
+
+  def body
+    content[:body]
+  end
 end

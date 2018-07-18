@@ -1,0 +1,9 @@
+.box.has-text-centered.js-nested-fields
+  %p.is-size-5 Item
+  = f.fields_for :content do |c|
+    = render "content_fields", f: c
+  .links
+    = link_to_remove_association f, data: { confirm: "Are you sure?" }, wrapper_class: "js-nested-fields", class: "button is-danger" do
+      %span Delete
+      %span.icon
+        .fa.fa-trash

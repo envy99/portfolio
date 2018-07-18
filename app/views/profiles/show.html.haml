@@ -4,12 +4,7 @@
       %h3.is-size-3= @profile.name.upcase_first
 - if @profile.sections.any?
   .columns.is-multiline
-    - @profile.sections.each do |section|
-      .column.is-12
-        .message
-          .message-header.is-flex.has-content-centered
-            %h4.is-size-4= section.name.upcase_first
-          .message-body
+    = render @profile.sections
 - if @profile.belongs_to?(current_user)
   .columns
     .column

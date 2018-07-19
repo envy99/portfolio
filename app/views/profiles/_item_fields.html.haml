@@ -1,7 +1,15 @@
 .box.has-text-centered.js-nested-fields
   %p.is-size-5 Item
-  = f.fields_for :content do |c|
-    = render "content_fields", f: c
+  .field
+    .control
+      = f.label :type, class: "label"
+      .select
+        = f.select(:type, options_for_select(Item::TYPES, selected: f.object.type), {}, { class: "js-select" })
+  .field
+    .control.js-content
+      = f.label :content, class: "label"
+      = f.text_field :content, class: "input", placeholder: "Item content"
+      = f.text_area :content, class: "textarea", placeholder: "Item content"
   .links
     = link_to_remove_association f, data: { confirm: "Are you sure?" }, wrapper_class: "js-nested-fields", class: "button is-danger" do
       %span Delete

@@ -1,9 +1,0 @@
-.field
-  .control
-    = f.label :type, class: "label"
-    .select
-      = f.select(:type, options_for_select([["Text", :text], ["Image", :image]], :text))
-.field
-  .control
-    = f.label :body, class: "label"
-    = f.text_field :body, class: "input", placeholder: "Item body"

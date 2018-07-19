@@ -6,6 +6,11 @@ RSpec.describe Item, type: :model do
   let(:image) { FactoryBot.build(:item, :image) }
 
   describe "validation tests" do
+    context "for type" do
+      it { is_expected.to validate_presence_of(:type) }
+      it { is_expected.to validate_inclusion_of(:type).to_allow(Item::TYPES) }
+    end
+
     context "for content" do
       it { is_expected.to validate_presence_of(:content) }
     end

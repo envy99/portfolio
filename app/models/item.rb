@@ -1,17 +1,18 @@
 class Item
+  TYPES = %i(text image).freeze
+
   include Mongoid::Document
   include ActiveModel::Validations
 
   embedded_in :section, inverse_of: :items
 
-  field :content, type: Hash
-  validates :content, presence: true
+  field :type, type: Symbol
+  field :content, type: String
+
+  validates :type, :content, presence: true
+  validates :type, inclusion: { in: TYPES }
 
   def is?(type)
-    content[:type] == type.to_s
-  end
-
-  def body
-    content[:body]
+    self.type == type.to_sym
   end
 end

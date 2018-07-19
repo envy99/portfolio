@@ -1,6 +1,6 @@
 .column
   .box.is-flex.has-content-centered.is-height-100
     - if item.is?(:image)
-      = image_tag(item.body, class: "image")
+      = image_tag(item.content, class: "image")
     - elsif item.is?(:text)
-      %p= item.body
+      %p= item.content

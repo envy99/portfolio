@@ -37,7 +37,7 @@ class ProfilesController < ApplicationController
     params.require(:profile).permit(
       :name,
       sections_attributes: [:id, :_destroy, :name,
-                            items_attributes: [:id, :_destroy, content: %i(type body)]]
+                            items_attributes: %i(id _destroy type content)]
     )
   end
 

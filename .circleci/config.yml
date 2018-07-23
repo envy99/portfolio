@@ -6,7 +6,7 @@ jobs:
       - image: circleci/ruby:2.5.1-node-browsers
         environment:
           RAILS_ENV: test
-      - image: circleci/mongo:4.0
+      - image: circleci/mongo:3.4.16
         environment:
           MONGO_INITDB_DATABASE: portfolio_test
     steps:

@@ -1,13 +1,14 @@
 RSpec.configure do |config|
   config.before(:suite) do
-    DatabaseCleaner[:mongoid].strategy = :truncation
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean
   end
 
   config.before(:each) do
-    DatabaseCleaner[:mongoid].start
+    DatabaseCleaner.start unless self.class.metadata[:skip_db_cleaner]
   end
 
   config.after(:each) do
-    DatabaseCleaner[:mongoid].clean
+    DatabaseCleaner.clean unless self.class.metadata[:skip_db_cleaner]
   end
 end

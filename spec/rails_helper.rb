@@ -7,6 +7,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require "rspec/rails"
 
 # CONFIGS:
+require "support/capybara_driver"
 require "support/database_cleaner"
 require "support/factory_bot"
 

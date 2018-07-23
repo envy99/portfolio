@@ -12,7 +12,9 @@ class Item
   validates :type, :content, presence: true
   validates :type, inclusion: { in: TYPES }
 
-  def is?(type)
-    self.type == type.to_sym
+  TYPES.each do |type_name|
+    define_method :"#{type_name}?" do
+      type == type_name
+    end
   end
 end

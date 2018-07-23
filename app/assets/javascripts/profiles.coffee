@@ -2,23 +2,22 @@ updateDynamicFields = (el) ->
   type = el.val()
 
   if (type != "")
-    target = el.closest(".js-nested-fields").find(".js-content")
-    target.children().not("label").hide()
+    target = el.closest(".js-nested-fields").find(".js-item-content")
+
+    fields = target.children()
+    fields.hide()
+    fields.keyup ->
+      fields.val($(this).val())
 
     switch (type)
       when "text"
-        target.find("textarea").show()
+        target.find("textarea").attr("placeholder", "Text body").show()
       when "image"
-        target.find("input").show()
-
-setupDynamicFields = (el) ->
-  updateDynamicFields(el)
-  el.on "change", ->
-    updateDynamicFields(el)
+        target.find("input").attr("placeholder", "Image URL").show()
 
 $(document).on "turbolinks:load", ->
-  $(".js-select").each ->
-    setupDynamicFields($(this))
+  $(".js-item-select").each ->
+    updateDynamicFields($(this))
 
   $(".js-sections, .js-items")
     .on "cocoon:before-insert", (e, new_element) ->
@@ -27,7 +26,9 @@ $(document).on "turbolinks:load", ->
       $(this).data("remove-timeout", 400)
       element.fadeOut(400)
 
-  $(".js-items")
-    .on "cocoon:after-insert", (e, element) ->
-      target = element.find(".js-select")
-      setupDynamicFields(target)
+  $(".js-sections")
+    .on "change", ".js-item-select", ->
+      updateDynamicFields($(this))
+    .on "cocoon:after-insert", ".js-items", (e, element) ->
+      target = element.find(".js-item-select")
+      updateDynamicFields(target)

@@ -1,27 +1,28 @@
-.columns
-  .column
-    .notification.is-info.has-text-centered.has-padding-md
-      %h3.is-size-3= @profile.name.upcase_first
-- if @profile.sections.any?
-  .columns.is-multiline
-    = render @profile.sections
-- if @profile.belongs_to?(current_user)
+#profile
   .columns
     .column
-      .notification.has-padding-md
-        .columns
-          .column
-          .column.is-narrow
-            .message.is-info
-              .message-header.is-flex.has-content-centered
-                %p Manage your profile
-              .message-body.is-flex.has-content-centered
-                .buttons.has-addons
-                  = link_to edit_profile_path(@profile), class: "button is-link" do
-                    %span Edit
-                    %span.icon
-                      %i.fa.fa-pencil
-                  = link_to profile_path(@profile), method: :delete, data: { confirm: "Are you sure?" }, class: "button is-danger" do
-                    %span Delete
-                    %span.icon
-                      %i.fa.fa-trash
+      .notification.is-info.has-text-centered.has-padding-md
+        %h3.is-size-3= @profile.name.upcase_first
+  - if @profile.sections.any?
+    .columns.is-multiline
+      = render @profile.sections
+  - if @profile.belongs_to?(current_user)
+    .columns
+      .column
+        .notification.has-padding-md
+          .columns
+            .column.has-padding-none
+            .column.is-narrow
+              .message.is-info
+                .message-header.is-flex.has-content-centered
+                  %p Manage your profile
+                .message-body.is-flex.has-content-centered
+                  .buttons.has-addons
+                    = link_to edit_profile_path(@profile), class: "button is-link" do
+                      %span Edit
+                      %span.icon
+                        %i.fa.fa-pencil
+                    = link_to profile_path(@profile), method: :delete, data: { confirm: "Are you sure?" }, class: "button is-danger" do
+                      %span Delete
+                      %span.icon
+                        %i.fa.fa-trash

@@ -15,7 +15,7 @@
       = render "shared/navbar"
       .site-content
         - if flash.any?
-          .section.has-padding-bottom-none
+          .notifications
             .container
               = render "shared/flash_messages"
         = render "shared/main"

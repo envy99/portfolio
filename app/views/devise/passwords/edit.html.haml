@@ -24,7 +24,7 @@
                   %i.fa.fa-lock
             .field
               .control
-                = f.submit "Change my password", class: "button is-primary is-medium is-fullwidth"
+                = f.button "Change my password", class: "button is-primary is-medium is-fullwidth js-disable-with-loading"
           .columns
             .column.links
               = render "devise/shared/links"

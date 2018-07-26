@@ -22,7 +22,7 @@
                   .fa.fa-plus-circle
   .field
     .control
-      = f.submit "Update profile", class: "button is-primary is-medium is-fullwidth"
+      = f.button "Update profile", class: "button is-primary is-medium is-fullwidth js-disable-with-loading"
 .columns
   .column.is-narrow.actions
     = link_to "Back", profile_path(@profile), class: "button is-danger is-outlined"

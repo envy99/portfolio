@@ -15,7 +15,7 @@
                   %i.fa.fa-envelope
             .field
               .control
-                = f.submit "Reset password", class: "button is-primary is-medium is-fullwidth"
+                = f.button "Reset password", class: "button is-primary is-medium is-fullwidth js-disable-with-loading"
           .columns
             .column.links
               = render "devise/shared/links"

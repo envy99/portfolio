@@ -2,7 +2,7 @@
   .container
     .navbar-brand
       = link_to "Portfolio", root_path, class: "navbar-item brand-logo has-background-transparent"
-      .navbar-burger.burger{"data-target": "navMenu"}
+      .navbar-burger.js-burger{"data-target": "navMenu"}
         %span
         %span
         %span
@@ -14,7 +14,7 @@
           .field.is-grouped.is-grouped-multiline
             - if user_signed_in?
               %p.control
-                = link_to "Sign out", destroy_user_session_path, method: :delete, class: "button is-danger is-outlined is-rounded"
+                = link_to "Sign out", destroy_user_session_path, method: :delete, class: "button is-danger is-outlined is-rounded js-disable-with-loading"
             - else
               %p.control
                 = link_to "Sign in", new_user_session_path, class: "button is-info is-outlined is-rounded"

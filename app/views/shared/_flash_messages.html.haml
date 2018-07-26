@@ -1,6 +1,6 @@
 - flash.each do |key, value|
   %div{class: "notification #{flash_class(key)}"}
-    %button.delete
+    %button.delete.js-delete
     - if value.class != Array
       %p= value
     - else

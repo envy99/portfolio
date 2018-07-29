@@ -1,0 +1,111 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://www.linkedin.com/oauth/v2/accessToken
+    body:
+      encoding: UTF-8
+      string: grant_type=authorization_code&code=AQTySHauLjbQ_2vZrVF2Ku9J7AiN3Jy0p2nmGHcn87LwTEIqiPg2MFSvaXR_O7BdGydFPy7icoftrohKv9dTu_vhFz_-Jyyx5kZkTtien_jCkmHfEwiPf0UFAgIqtF6IeR98W1OD6A0icymotpEoivXi6d9fy6gvrPatvQb3&redirect_uri=http%3A%2F%2Flocalhost%3A1234%2Foauth%2Flinkedin%2Ffetch_user_data&client_id=<CLIENT_ID>&client_secret=<CLIENT_SECRET>
+    headers:
+      Accept: "*/*"
+      Accept-Encoding: gzip, deflate
+      User-Agent: rest-client/2.0.2 (linux-gnu x86_64) ruby/2.5.1p57
+      Content-Length: '339'
+      Content-Type: application/x-www-form-urlencoded
+      Host: www.linkedin.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Vary: Accept-Encoding
+      Server: Play
+      Content-Type: application/json; charset=utf-8
+      Content-Length: '399'
+      Date: Sat, 08 Sep 2018 11:16:33 GMT
+      X-Fs-Uuid: e43d68ba90685215c0df9235e72a0000
+      Strict-Transport-Security: max-age=2592000
+      X-Content-Type-Options: nosniff
+      X-Xss-Protection: 1; mode=block
+      X-Frame-Options: sameorigin
+      Content-Security-Policy: 'default-src *; connect-src ''self'' static.licdn.com
+        media.licdn.com static-exp1.licdn.com static-exp2.licdn.com media-exp1.licdn.com
+        media-exp2.licdn.com https://media-src.linkedin.com/media/ www.linkedin.com
+        s.c.lnkd.licdn.com m.c.lnkd.licdn.com s.c.exp1.licdn.com s.c.exp2.licdn.com
+        m.c.exp1.licdn.com m.c.exp2.licdn.com wss://*.linkedin.com dms.licdn.com;
+        img-src data: blob: *; font-src data: *; style-src ''unsafe-inline'' ''self''
+        static-src.linkedin.com *.licdn.com; script-src ''report-sample'' ''unsafe-inline''
+        ''unsafe-eval'' ''self'' platform.linkedin.com spdy.linkedin.com static-src.linkedin.com
+        *.ads.linkedin.com *.licdn.com static.chartbeat.com www.google-analytics.com
+        ssl.google-analytics.com bcvipva02.rightnowtech.com www.bizographics.com sjs.bizographics.com
+        js.bizographics.com d.la4-c1-was.salesforceliveagent.com slideshare.www.linkedin.com;
+        object-src ''none''; media-src blob: *; child-src blob: lnkd-communities:
+        voyager: *; frame-ancestors ''self'''
+      X-Li-Fabric: prod-lor1
+      Set-Cookie:
+      - bcookie="v=2&5e341065-d37c-4861-8865-bc7fc048a257"; domain=.linkedin.com;
+        Path=/; Expires=Mon, 07-Sep-2020 22:54:05 GMT
+      - bscookie="v=1&20180908111633c66e34a5-3da1-41f7-8d28-cb61253ff611AQHl3EqZu7th3nsRMcB88hZVZaJ8mlMG";
+        domain=.www.linkedin.com; Path=/; Secure; Expires=Mon, 07-Sep-2020 22:54:05
+        GMT; HttpOnly
+      - lang=v=2&lang=en-us; Path=/; Domain=linkedin.com
+      - lidc="b=OB90:g=982:u=4:i=1536405393:t=1536488312:s=AQFli-BzoqvSGgyjV3tGcNRlcZYAViDi";
+        Expires=Sun, 09 Sep 2018 10:18:32 GMT; domain=.linkedin.com; Path=/
+      X-Li-Proto:
+      - http/1.1
+      - http/1.1
+      Pragma: no-cache
+      Expires: Thu, 01 Jan 1970 00:00:00 GMT
+      Cache-Control: no-cache, no-store
+      Connection: keep-alive
+      X-Li-Pop: prod-efr5
+      X-Li-Uuid: 30QtupBoUhUg6Rvb5SoAAA==
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "access_token": "AQW2pTuclxutW03no5blWiIpvvhhqARninrBytNkSKO28e9XqqmiQKYFeYkkdE0hN4yGH88UXtpiboGBBbCRgigDv8oIRqnuNbU0za6WHdZXUdXSGQrz3UcmYycd59i3bk0fNshcntMK6Kf-ZFBInIx_1kgOo9HO6WmbmqJrczlJzcjvmqxoy8Yjmw_cO6MXjAP6qgL6b8E6QacJMOQluSLNOwEXUElxXyfms--WBIcPEGP2mOBKAHvIepMDBFSM7Z0hN7ECZs_xV7iIyqsr9pRbpUXMY06M_DgcY1vt6f_JJD8CtOuLPwHDIMBWnEGg6KD_RRLeU9c-wMqkxFFM_V6_rTys8w",
+          "expires_in": 5183999
+        }
+    http_version:
+  recorded_at: Sat, 08 Sep 2018 11:16:34 GMT
+- request:
+    method: get
+    uri: https://api.linkedin.com/v1/people/~:(id,email-address)?format=json&oauth2_access_token=AQW2pTuclxutW03no5blWiIpvvhhqARninrBytNkSKO28e9XqqmiQKYFeYkkdE0hN4yGH88UXtpiboGBBbCRgigDv8oIRqnuNbU0za6WHdZXUdXSGQrz3UcmYycd59i3bk0fNshcntMK6Kf-ZFBInIx_1kgOo9HO6WmbmqJrczlJzcjvmqxoy8Yjmw_cO6MXjAP6qgL6b8E6QacJMOQluSLNOwEXUElxXyfms--WBIcPEGP2mOBKAHvIepMDBFSM7Z0hN7ECZs_xV7iIyqsr9pRbpUXMY06M_DgcY1vt6f_JJD8CtOuLPwHDIMBWnEGg6KD_RRLeU9c-wMqkxFFM_V6_rTys8w
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept: "*/*"
+      Accept-Encoding: gzip, deflate
+      User-Agent: rest-client/2.0.2 (linux-gnu x86_64) ruby/2.5.1p57
+      Host: api.linkedin.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server: Apache-Coyote/1.1
+      X-Li-Request-Id: 5XUZVJWVSD
+      Vary: "*"
+      X-Li-Format: json
+      Content-Type: application/json;charset=UTF-8
+      Date: Sat, 08 Sep 2018 11:16:34 GMT
+      X-Li-Fabric: prod-lor1
+      Transfer-Encoding: chunked
+      Connection: keep-alive
+      X-Li-Pop: prod-tln1
+      X-Li-Proto: http/1.1
+      Set-Cookie: lidc="b=OB90:g=982:u=4:i=1536405395:t=1536488312:s=AQFGm_gKKNBXk2h2eRtj3PW9rtxAVGsj"
+      X-Li-Route-Key: '"b=OB90:g=982:u=4:i=1536405395:t=1536488312:s=AQFGm_gKKNBXk2h2eRtj3PW9rtxAVGsj"'
+      X-Li-Uuid: NQTLCJFoUhVgkG1OlisAAA==
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "emailAddress": "test1@example.com",
+          "id": "example"
+        }
+    http_version:
+  recorded_at: Sat, 08 Sep 2018 11:16:35 GMT
+recorded_with: VCR 4.0.0

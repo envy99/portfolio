@@ -22,6 +22,8 @@ gem 'autoprefixer-rails', '~> 8.6', '>= 8.6.4'
 gem 'devise'
 gem 'jquery-rails'
 gem 'cocoon'
+gem 'figaro'
+gem 'rest-client'
 
 group :development, :test do
   gem 'byebug', platforms: %i(mri mingw x64_mingw)
@@ -40,6 +42,8 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'vcr'
+  gem 'webmock'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
   gem 'mongoid-rspec'

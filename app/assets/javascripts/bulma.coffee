@@ -21,6 +21,10 @@ classes = {
   loading: "is-loading"
 }
 
+dataNames = {
+  target: "target"
+}
+
 hotkeys = {
   close: 27 # Esc key
 }
@@ -33,12 +37,15 @@ preventCloseSelector = elements.dropdowns + ", " + hooks.closeable
 getAll = (selector) ->
   document.querySelectorAll(selector)
 
-getTargetByData = (el, dataName) ->
-  data = el.getAttribute("data-#{dataName}")
-  document.getElementById(data)
+getData = (el, dataName) ->
+  el.getAttribute("data-#{dataName}") if el
+
+getTargetById = (el) ->
+  data = getData(el, dataNames.target)
+  document.getElementById(data) if data
 
 hasClass = (el, className) ->
-  el.classList.contains(className)
+  el.classList.contains(className) if el
 
 addClass = (el, className) ->
   el.classList.add(className) if el
@@ -48,34 +55,39 @@ removeClass = (el, className) ->
 
 removeClassFromAll = (selector, className) ->
   getAll(selector).forEach (el) ->
-    el.classList.remove(className)
+    removeClass(el, className)
 
 toggleClass = (el, className) ->
   el.classList.toggle(className) if el
 
 document.addEventListener "turbolinks:load", ->
   getAll(hooks.open).forEach (el) ->
-    el.addEventListener "click", ->
-      target = getTargetByData(el, "target")
+    el.addEventListener "click", (e) ->
+      e.stopPropagation();
+      target = el.closest(elements.toggleable)
+      target = getTargetById(el) if getData(el, dataNames.target)
       addClass(target, classes.active)
       addClass(elements.root, classes.clipped) if hasClass(target, "modal")
 
   getAll(hooks.close).forEach (el) ->
-    el.addEventListener "click", ->
+    el.addEventListener "click", (e) ->
+      e.stopPropagation();
       target = el.closest(elements.toggleable)
+      target = getTargetById(el) if getData(el, dataNames.target)
       removeClass(target, classes.active)
       removeClass(elements.root, classes.clipped) if hasClass(target, "modal")
 
   getAll(hooks.toggle).forEach (el) ->
     el.addEventListener "click", (e) ->
       e.stopPropagation();
-      target = getTargetByData(el, "target")
-      target = if target then target else el.closest(elements.toggleable)
+      target = el.closest(elements.toggleable)
+      target = getTargetById(el) if getData(el, dataNames.target)
       toggleClass(target, classes.active)
 
   getAll(hooks.delete).forEach (el) ->
     el.addEventListener "click", ->
       target = el.closest(elements.removable)
+      target = getTargetById(el) if getData(el, dataNames.target)
       target.remove() if target
 
   getAll(preventCloseSelector).forEach (el) ->
@@ -86,8 +98,8 @@ document.addEventListener "turbolinks:load", ->
     el.addEventListener "click", (e) ->
       e.stopPropagation();
       preventClose = false
-      target = getTargetByData(el, "target")
-      toggleClass(target, classes.active)
+      target = getTargetById(el) if getData(el, dataNames.target)
+      toggleClass(target, classes.active) if target
       toggleClass(el, classes.active)
 
   getAll(hooks.loading).forEach (el) ->

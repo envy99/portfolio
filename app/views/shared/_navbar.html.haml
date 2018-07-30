@@ -10,13 +10,25 @@
       .navbar-start
         = render "shared/nav_items", classes: "navbar-item"
       .navbar-end
-        .navbar-item
-          .field.is-grouped.is-grouped-multiline
-            - if user_signed_in?
-              %p.control
-                = link_to "Sign out", destroy_user_session_path, method: :delete, class: "button is-danger is-outlined is-rounded js-disable-with-loading"
-            - else
-              %p.control
-                = link_to "Sign in", new_user_session_path, class: "button is-info is-outlined is-rounded"
-              %p.control
-                = link_to "Sign up", new_user_registration_path, class: "button is-primary is-outlined is-rounded"
+        - if user_signed_in?
+          .navbar-item.has-dropdown
+            .navbar-link.is-unselectable.js-toggle
+              %span.icon.has-margin-right-xxs
+                .fa.fa-user-circle-o
+              %span= current_user.username.upcase_first
+            .navbar-dropdown.is-right
+              .dropdown-item
+                %p.has-text-weight-bold Signed in as
+                %p= "#{current_user.username.upcase_first} (#{current_user.email})"
+              %hr.dropdown-divider
+              - if current_user.profile.present?
+                = link_to "Your profile", profile_path(current_user.profile), class: "dropdown-item"
+              %hr.dropdown-divider
+              .dropdown-item
+                .buttons
+                  = link_to "Sign out", destroy_user_session_path, method: :delete, class: "button is-danger is-outlined is-rounded js-disable-with-loading"
+        - else
+          .navbar-item
+            .buttons.is-centered
+              = link_to "Sign in", new_user_session_path, class: "button is-info is-outlined is-rounded"
+              = link_to "Sign up", new_user_registration_path, class: "button is-primary is-outlined is-rounded"

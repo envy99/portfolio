@@ -1,6 +1,7 @@
 elements = {
   root: document.documentElement,
-  toggleable: ".modal, .dropdown, .navbar-burger, .navbar-menu",
+  dropdowns: ".dropdown, .has-dropdown, .navbar-dropdown",
+  toggleable: ".modal, .dropdown, .has-dropdown, .navbar-burger, .navbar-menu",
   removable: ".notification, .message, .tag"
 }
 
@@ -23,6 +24,11 @@ classes = {
 hotkeys = {
   close: 27 # Esc key
 }
+
+# Prevent closeable elements from closing when we click on them
+preventClose = false
+# Selector of elements that should be prevented from closing
+preventCloseSelector = elements.dropdowns + ", " + hooks.closeable
 
 getAll = (selector) ->
   document.querySelectorAll(selector)
@@ -72,9 +78,14 @@ document.addEventListener "turbolinks:load", ->
       target = el.closest(elements.removable)
       target.remove() if target
 
+  getAll(preventCloseSelector).forEach (el) ->
+    el.addEventListener "click", ->
+      preventClose = true
+
   getAll(hooks.burger).forEach (el) ->
     el.addEventListener "click", (e) ->
       e.stopPropagation();
+      preventClose = false
       target = getTargetByData(el, "target")
       toggleClass(target, classes.active)
       toggleClass(el, classes.active)
@@ -90,5 +101,7 @@ document.addEventListener "turbolinks:load", ->
       removeClassFromAll(selector, classes.active)
 
   document.addEventListener "click", ->
-    selector = ".dropdown, " + hooks.closeable
-    removeClassFromAll(selector, classes.active)
+    if preventClose
+      preventClose = false
+      return
+    removeClassFromAll(preventCloseSelector, classes.active)

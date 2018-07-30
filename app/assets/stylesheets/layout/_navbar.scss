@@ -1,9 +1,63 @@
 .navbar {
-  &-brand {
-    @include from($desktop) {
-      margin-right: 0.5rem;
-      padding-right: 0.5rem;
-      border-right: 1px solid $dark;
+  &.is-spaced {
+    padding: 1rem 2rem;
+
+    @include until($desktop) {
+      padding: 1rem;
+    }
+  }
+}
+
+.navbar-brand {
+  @include from($desktop) {
+    margin-right: 0.5rem;
+    padding-right: 0.5rem;
+    border-right: 1px solid $dark;
+  }
+}
+
+.navbar-menu {
+  @include until($desktop) {
+    margin: 1rem 0.5rem;
+    border-radius: $navbar-menu-radius;
+  }
+}
+
+.navbar-dropdown {
+  min-width: $navbar-dropdown-width;
+
+  @include until($desktop) {
+    display: none;
+    min-width: auto;
+    margin: 0.5rem 1rem;
+    border: 1px solid $grey-lighter;
+    border-radius: $navbar-menu-radius;
+  }
+}
+
+.navbar-item {
+  &.has-dropdown {
+    &.is-active {
+      .navbar-dropdown {
+        @include until($desktop) {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.navbar-link {
+  &:not(.is-arrowless) {
+    &::after {
+      display: block;
+      border-color: $grey;
+    }
+
+    &:hover {
+      &::after {
+        border-color: $link;
+      }
     }
   }
 }

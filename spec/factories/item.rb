@@ -5,12 +5,12 @@ FactoryBot.define do
 
     trait :text do
       type :text
-      content "Item text"
+      sequence(:content) { |n| "Item text #{n}" }
     end
 
     trait :image do
       type :image
-      content "https://example.com/image.png"
+      sequence(:content) { |n| "https://example.com/image#{n}.png" }
     end
   end
 end

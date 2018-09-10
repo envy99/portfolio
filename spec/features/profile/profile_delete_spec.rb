@@ -8,7 +8,7 @@ RSpec.feature "Deleting a profile" do
       login_as(profile.user, scope: :user)
       visit profiles_path
       click_link profile.name
-      within ".message" do
+      within("#profile_management_panel") do
         click_link "Delete"
       end
 

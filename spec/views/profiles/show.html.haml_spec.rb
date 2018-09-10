@@ -32,8 +32,10 @@ describe "profiles/show.html.haml" do
         allow(view).to receive(:current_user).and_return(profile.user)
         render template: "profiles/show.html.haml"
 
-        expect(rendered).to have_link("Edit", href: edit_profile_path(profile))
-        expect(rendered).to have_link("Delete", href: profile_path(profile))
+        within("#profile_management_panel") do
+          expect(rendered).to have_link("Edit", href: edit_profile_path(profile))
+          expect(rendered).to have_link("Delete", href: profile_path(profile))
+        end
       end
     end
 
@@ -42,8 +44,10 @@ describe "profiles/show.html.haml" do
         allow(view).to receive(:current_user).and_return(other_user)
         render template: "profiles/show.html.haml"
 
-        expect(rendered).not_to have_link("Edit", href: edit_profile_path(profile))
-        expect(rendered).not_to have_link("Delete", href: profile_path(profile))
+        within("#profile_management_panel") do
+          expect(rendered).not_to have_link("Edit", href: edit_profile_path(profile))
+          expect(rendered).not_to have_link("Delete", href: profile_path(profile))
+        end
       end
     end
   end

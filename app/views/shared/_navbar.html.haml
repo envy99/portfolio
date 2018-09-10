@@ -2,11 +2,11 @@
   .container
     .navbar-brand
       = link_to "Portfolio", root_path, class: "navbar-item brand-logo has-background-transparent"
-      .navbar-burger.js-burger{"data-target": "navMenu"}
+      .navbar-burger.js-burger{"data-target": "nav_menu"}
         %span
         %span
         %span
-    #navMenu.navbar-menu
+    #nav_menu.navbar-menu
       .navbar-start
         = render "shared/nav_items", classes: "navbar-item"
       .navbar-end

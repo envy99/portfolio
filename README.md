@@ -40,9 +40,9 @@ That is why, the process of finding a suitable MongoDB version will take a few a
 	```
 	$ cd portfolio
 	```
-1. Setup **.env** file in root directory of the project by copying the example. Be sure to fill in the contents of this file after copying
+1. Setup environment variables by copying the example **application.yml** file, which is located in the config directory of the project. Be sure to adjust the contents of this file to your needs
 	```
-	$ cp .env.example .env
+	$ cp config/application.sample.yml config/application.yml
 	```
 1. Install all dependencies *(requires [bundler gem](https://github.com/bundler/bundler))*
 	```

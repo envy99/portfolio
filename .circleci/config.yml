@@ -30,7 +30,7 @@ jobs:
       # Setup the environment variables
       - run:
           name: Setup the environment variables
-          command: cp .env.example .env
+          command: cp config/application.sample.yml config/application.yml
       # Run automated tests
       - run:
           name: Run automated tests

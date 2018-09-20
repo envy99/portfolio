@@ -15,7 +15,11 @@
 
 /node_modules
 /yarn-error.log
+/public/packs-test
 
 .byebug_history
+.yarn-integrity
+yarn-debug.log*
+
 # Ignore application configuration
 /config/application.yml

@@ -37,6 +37,9 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
+  field :linkedin_id, type: String
+  field :linkedin_access_token, type: String
+
   def username
     email.split("@")[0]
   end

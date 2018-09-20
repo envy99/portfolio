@@ -23,6 +23,8 @@
             .field
               .control
                 = f.button "Sign in", class: "button is-primary is-medium is-fullwidth js-disable-with-loading"
+            .field
+              = link_to "Sign In using linkedin", oauth_linkedin_fetch_authorization_code_path
           .columns
             .column.links
               = render "devise/shared/links"

@@ -1,0 +1,18 @@
+- content_for :fullscreen do
+  .section.is-flex.is-fullscreen.is-column.has-content-centered.has-background-light
+    .container.is-narrow
+      - if flash.any?
+        = render "shared/flash_messages"
+      .box.is-highlight
+        .form.has-text-centered
+          %h2.title Merge your account
+          %p= "It seems you already have an account connected with #{@email}, but you haven't been using #{@oauth_provide} as verification method before. Please submit your password to prove you are owner of this Portfolio account. After this procedure, you will be able to sign in through #{@oauth_provide} with just one click."
+          = form_for(@user, url: url_for(:controller => 'merge_user', :action => 'create'), method: :POST) do |f|
+            .field
+              .control.has-icons-left
+                = f.password_field :password, class: "input", autocomplete: "off", placeholder: "Password"
+                %span.icon.is-small.is-left
+                  %i.fa.fa-lock
+            .field
+              .control
+                = f.submit "Verify", class: "button is-primary is-medium is-fullwidth"
